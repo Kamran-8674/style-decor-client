@@ -11,6 +11,7 @@ import DashboardLayout from "../layouts/DashboardLayout";
 import MyBookings from "../pages/dahsboard/myBookings/MyBookings";
 import AddServices from "../pages/dahsboard/AddServices/AddServices";
 import Services from "../pages/services/Services";
+import ServiceDetails from "../pages/services/ServiceDetails";
 
 export const router = createBrowserRouter([
   {
@@ -24,6 +25,11 @@ export const router = createBrowserRouter([
         {
           path:'services',
           Component:Services
+        },
+        {
+          path:'service/:id',
+          Component:ServiceDetails
+
         },
 
         {
