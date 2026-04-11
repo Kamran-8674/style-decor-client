@@ -1,14 +1,14 @@
 import React from 'react';
-import { useNavigate, useParams } from 'react-router';
+import {  Link, useParams } from 'react-router';
 import useAxiosSecure from '../../hooks/useAxiosSecure';
 import { useQuery } from '@tanstack/react-query';
-import useAuth from '../../hooks/useAuth';
+// import useAuth from '../../hooks/useAuth';
 
 const ServiceDetails = () => {
      const { id } = useParams();
-  const navigate = useNavigate();
+  // const navigate = useNavigate();
   const axiosSecure = useAxiosSecure()
-  const {user}=useAuth()
+  // const {user}=useAuth()
 
    const {data:service=[], isLoading}=useQuery({
 
@@ -21,15 +21,15 @@ const ServiceDetails = () => {
         }
     })
 
-     const handleBookNow = () => {
-    if (!user) {
-      alert("Please login first!");
-      navigate("/login");
-      return;
-    }
+  //    const handleBookNow = () => {
+  //   if (!user) {
+  //     alert("Please login first!");
+  //     navigate("/login");
+  //     return;
+  //   }
 
-    navigate(`/booking/${id}`);
-  };
+  //   navigate(`/booking/${id}`);
+  // };
 
   
   if (isLoading) {
@@ -70,12 +70,12 @@ const ServiceDetails = () => {
           {service.description}
         </p>
 
-        <button
-          onClick={handleBookNow}
-          className="btn btn-primary mt-4"
-        >
-          Book Now
-        </button>
+        <Link
+            to={`/booking/${service._id}`}
+            className="btn btn-primary w-full"
+          >
+            View Details
+          </Link>
       </div>
     </div>
     );

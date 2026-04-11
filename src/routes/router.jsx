@@ -12,6 +12,7 @@ import MyBookings from "../pages/dahsboard/myBookings/MyBookings";
 import AddServices from "../pages/dahsboard/AddServices/AddServices";
 import Services from "../pages/services/Services";
 import ServiceDetails from "../pages/services/ServiceDetails";
+import BookingPage from "../pages/booking/BookingPage";
 
 export const router = createBrowserRouter([
   {
@@ -29,6 +30,12 @@ export const router = createBrowserRouter([
         {
           path:'service/:id',
           Component:ServiceDetails
+
+        },
+        {
+          path:'booking/:id',
+          Component:BookingPage
+          // element:<PrivateRoute><BookingPage></BookingPage></PrivateRoute>
 
         },
 

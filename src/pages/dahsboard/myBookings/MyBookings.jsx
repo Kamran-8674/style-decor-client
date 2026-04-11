@@ -1,11 +1,90 @@
-import React from 'react';
+import { useQuery } from "@tanstack/react-query";
+import React from "react";
+import useAxiosSecure from "../../../hooks/useAxiosSecure";
+import useAuth from "../../../hooks/useAuth";
+import { FaTrash } from "react-icons/fa";
+import { CiEdit } from "react-icons/ci";
 
 const MyBookings = () => {
-    return (
-        <div>
-            all my bokings
-        </div>
-    );
+  const axiosSecure = useAxiosSecure();
+  const { user } = useAuth();
+
+//   const { data: myBookings, isLoading } = useQuery({
+//     queryKey: ["bookings", user?.email],
+//     queryFn: async () => {
+//       const res = await axiosSecure.get(`/bookings?email=${user.email}`);
+//       return res.data;
+//     },
+//   });
+
+  const { data: myBookings = [], isLoading } = useQuery({
+    queryKey: ["bookings", user?.email],
+    queryFn: async () => {
+      const res = await axiosSecure.get(`/bookings?email=${user?.email}`);
+      return res.data;
+    },
+    // enabled: !!user?.email, // 🔥 important
+  });
+
+  const handleDelete = (id) =>{
+    console.log(id)
+  }
+
+  console.log(myBookings);
+
+  return (
+    <div className="py-20 container mx-auto ">
+      <h2 className="text-2xl font-bold text-center mt-6 mb-6">My Bookings</h2>
+
+      <div className="overflow-x-auto">
+        <table className="table w-full border border-orange-300 rounded-lg shadow-sm">
+          <thead className=" bg-primary text-white">
+            <tr>
+              <th></th>
+              <th>Service Name</th>
+              <th>cost</th>
+              <th>CreatedAt</th>
+              <th>payment status</th>
+              <th>Actions</th>
+            </tr>
+          </thead>
+          <tbody>
+            {myBookings.map((booking,index) => (
+              <tr key={booking._id} className="hover:bg-orange-200">
+                <td>
+                 {index + 1}
+                </td>
+                <td className="font-medium">{booking.serviceName}</td>
+                <td>{booking.price}</td>
+                <td>{booking.createdAt}</td>
+                <td>{booking.createdAt}</td>
+                <td className="flex items-center gap-3">
+                  <button
+                    onClick={() => handleDelete(booking._id)}
+                    className="btn btn-xs bg-orange-500 text-white hover:bg-orange-600"
+                  >
+                    <FaTrash />
+                  </button>
+                  {/* <Link to={`/update/${booking._id}`}>
+                    {" "}
+                    <button className="btn btn-xs bg-orange-500 text-white hover:bg-orange-600">
+                      <CiEdit />
+                    </button>
+                  </Link> */}
+                </td>
+              </tr>
+            ))}
+          </tbody>
+        </table>
+
+        {/* {myBookings.length === 0 && (
+          <p className="text-center text-gray-500 mt-6">
+            You haven’t added any bookings yet.
+          </p>
+        )} */}
+      </div>
+    </div>
+  );
 };
 
 export default MyBookings;
