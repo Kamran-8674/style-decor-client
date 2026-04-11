@@ -4,20 +4,21 @@ import useAxiosSecure from "../../../hooks/useAxiosSecure";
 import useAuth from "../../../hooks/useAuth";
 import { FaTrash } from "react-icons/fa";
 import { CiEdit } from "react-icons/ci";
+import Swal from "sweetalert2";
 
 const MyBookings = () => {
   const axiosSecure = useAxiosSecure();
   const { user } = useAuth();
 
-//   const { data: myBookings, isLoading } = useQuery({
-//     queryKey: ["bookings", user?.email],
-//     queryFn: async () => {
-//       const res = await axiosSecure.get(`/bookings?email=${user.email}`);
-//       return res.data;
-//     },
-//   });
+  //   const { data: myBookings, isLoading } = useQuery({
+  //     queryKey: ["bookings", user?.email],
+  //     queryFn: async () => {
+  //       const res = await axiosSecure.get(`/bookings?email=${user.email}`);
+  //       return res.data;
+  //     },
+  //   });
 
-  const { data: myBookings = [], isLoading } = useQuery({
+  const { data: myBookings = [], isLoading, refetch } = useQuery({
     queryKey: ["bookings", user?.email],
     queryFn: async () => {
       const res = await axiosSecure.get(`/bookings?email=${user?.email}`);
@@ -26,9 +27,35 @@ const MyBookings = () => {
     // enabled: !!user?.email, // 🔥 important
   });
 
-  const handleDelete = (id) =>{
-    console.log(id)
-  }
+  const handleDelete = (id) => {
+    Swal.fire({
+      title: "Are you sure?",
+      text: "You won't be able to revert this!",
+      icon: "warning",
+      showCancelButton: true,
+      confirmButtonColor: "#3085d6",
+      cancelButtonColor: "#d33",
+      confirmButtonText: "Yes, delete it!",
+    }).then((result) => {
+      if (result.isConfirmed)
+
+        axiosSecure.delete(`/bookings/${id}`)
+        .then(res =>{
+            console.log(res)
+            if(res.data.deletedCount){
+                refetch()
+                 Swal.fire({
+          title: "Deleted!",
+          text: "Your file has been deleted.",
+          icon: "success",
+        });
+
+            }
+        })
+       
+    });
+    console.log(id);
+  };
 
   console.log(myBookings);
 
@@ -49,11 +76,9 @@ const MyBookings = () => {
             </tr>
           </thead>
           <tbody>
-            {myBookings.map((booking,index) => (
+            {myBookings.map((booking, index) => (
               <tr key={booking._id} className="hover:bg-orange-200">
-                <td>
-                 {index + 1}
-                </td>
+                <td>{index + 1}</td>
                 <td className="font-medium">{booking.serviceName}</td>
                 <td>{booking.price}</td>
                 <td>{booking.createdAt}</td>
