@@ -61,7 +61,7 @@ const MyBookings = () => {
    const handlePayment = async(booking) =>{
       const paymentInfo = {
         cost: booking.cost,
-        bookingId:booking.serviceId,
+        bookingId:booking._id,
         userEmail:booking.userEmail,
         serviceName : booking.serviceName
 
@@ -106,7 +106,7 @@ const MyBookings = () => {
                 <td>{booking.createdAt}</td>
                 <td>
                   {
-                    booking.paymenStatus === 'paid' ? 
+                    booking.paymentStatus === 'paid' ? 
                     <span className="text-green-400">Paid</span>:
                     
                     <button onClick={()=>handlePayment(booking)} className="btn btn-primary text-black btn-sm">Pay</button>
