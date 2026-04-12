@@ -5,6 +5,7 @@ import useAuth from "../../../hooks/useAuth";
 import { FaTrash } from "react-icons/fa";
 import { CiEdit } from "react-icons/ci";
 import Swal from "sweetalert2";
+import { Link } from "react-router";
 
 const MyBookings = () => {
   const axiosSecure = useAxiosSecure();
@@ -57,7 +58,27 @@ const MyBookings = () => {
     console.log(id);
   };
 
+   const handlePayment = async(booking) =>{
+      const paymentInfo = {
+        cost: booking.cost,
+        bookingId:booking.serviceId,
+        userEmail:booking.userEmail,
+        serviceName : booking.serviceName
+
+      }
+      const res = await axiosSecure.post('/create-checkout-session', paymentInfo)
+      
+      window.location.assign( res.data.url)
+      console.log(res)
+      
+    }
+
   console.log(myBookings);
+
+  if (isLoading) {
+    return <div className="text-center mt-20">Loading...</div>;
+  }
+
 
   return (
     <div className="py-20 container mx-auto ">
@@ -71,7 +92,8 @@ const MyBookings = () => {
               <th>Service Name</th>
               <th>cost</th>
               <th>CreatedAt</th>
-              <th>payment status</th>
+              <th>payment </th>
+              <th>Deloivery status</th>
               <th>Actions</th>
             </tr>
           </thead>
@@ -80,9 +102,21 @@ const MyBookings = () => {
               <tr key={booking._id} className="hover:bg-orange-200">
                 <td>{index + 1}</td>
                 <td className="font-medium">{booking.serviceName}</td>
-                <td>{booking.price}</td>
+                <td>{booking.cost}</td>
                 <td>{booking.createdAt}</td>
-                <td>{booking.createdAt}</td>
+                <td>
+                  {
+                    booking.paymenStatus === 'paid' ? 
+                    <span className="text-green-400">Paid</span>:
+                    
+                    <button onClick={()=>handlePayment(booking)} className="btn btn-primary text-black btn-sm">Pay</button>
+                   
+                  
+                  }
+
+
+                </td>
+                <td>{booking.deliveryStatus}</td>
                 <td className="flex items-center gap-3">
                   <button
                     onClick={() => handleDelete(booking._id)}

@@ -13,6 +13,9 @@ import AddServices from "../pages/dahsboard/AddServices/AddServices";
 import Services from "../pages/services/Services";
 import ServiceDetails from "../pages/services/ServiceDetails";
 import BookingPage from "../pages/booking/BookingPage";
+import Payment from "../pages/dahsboard/payment/Payment";
+import PaymentSuccess from "../pages/dahsboard/payment/PaymentSuccess";
+import PaymentCancel from "../pages/dahsboard/payment/PaymentCancel";
 
 export const router = createBrowserRouter([
   {
@@ -78,6 +81,18 @@ export const router = createBrowserRouter([
         path:'my-bookings',
         Component:MyBookings
 
+      },
+      {
+        path:'payment/:bookingId',
+        Component:Payment
+      },
+      {
+        path:'payment-success',
+        Component:PaymentSuccess
+      },
+      {
+        path:'payment-cancel',
+        Component:PaymentCancel
       }
 
     ]

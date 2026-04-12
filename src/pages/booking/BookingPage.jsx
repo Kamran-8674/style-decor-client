@@ -25,7 +25,7 @@ const BookingPage = () => {
     const bookingData = {
       serviceId: id,
       serviceName: service.service_name,
-      price: service.cost,
+      cost: service.cost,
       userEmail: user.email,
       userName: user.name,
       
