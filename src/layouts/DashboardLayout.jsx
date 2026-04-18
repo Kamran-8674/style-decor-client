@@ -4,8 +4,11 @@ import { FaRegCreditCard, FaUser } from "react-icons/fa";
 import { IoIosCreate } from "react-icons/io";
 import { MdPending } from "react-icons/md";
 import { Link, NavLink, Outlet } from "react-router";
+import useRole from "../hooks/useRole";
 
 const DashboardLayout = () => {
+  const {role} =useRole()
+  console.log(role)
   return (
     <div className="drawer lg:drawer-open">
       <input id="my-drawer-4" type="checkbox" className="drawer-toggle" />
@@ -93,7 +96,7 @@ const DashboardLayout = () => {
                 <FaRegCreditCard />
 
                 <span className="is-drawer-close:hidden">Payment History</span>
-              </NavLink>{" "}
+              </NavLink>
             </li>
             <li>
               <NavLink
@@ -105,8 +108,11 @@ const DashboardLayout = () => {
 
                 <span className="is-drawer-close:hidden">My Bookings</span>
               </NavLink>
+
             </li>
-            <li>
+
+            {role === 'admin' && <>
+             <li>
               <NavLink
                 className="is-drawer-close:tooltip is-drawer-close:tooltip-right"
                 data-tip="Approve Decorator"
@@ -132,6 +138,9 @@ const DashboardLayout = () => {
                 </span>
               </NavLink>
             </li>
+            
+            </>}
+           
             {/* <li>
               <NavLink to={"/dashboard/my-bookings"}></NavLink>
             </li> */}

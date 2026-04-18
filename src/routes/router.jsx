@@ -19,6 +19,7 @@ import PaymentCancel from "../pages/dahsboard/payment/PaymentCancel";
 import PaymentHistory from "../pages/dahsboard/paymentHistory/PaymentHistory";
 import ApproveDecorator from "../pages/dahsboard/approveDecorator/ApproveDecorator";
 import UsersManagement from "../pages/dahsboard/users management/UsersManagement";
+import AdminRoute from "./AdminRoute";
 
 export const router = createBrowserRouter([
   {
@@ -40,8 +41,8 @@ export const router = createBrowserRouter([
         },
         {
           path:'booking/:id',
-          Component:BookingPage
-          // element:<PrivateRoute><BookingPage></BookingPage></PrivateRoute>
+          // Component:BookingPage
+          element:<PrivateRoute><BookingPage></BookingPage></PrivateRoute>
 
         },
 
@@ -73,7 +74,7 @@ export const router = createBrowserRouter([
   },
   {
     path:'dashboard',
-    element:<DashboardLayout></DashboardLayout>,
+    element:<PrivateRoute><DashboardLayout></DashboardLayout></PrivateRoute>,
     children:[
 
       {
@@ -109,6 +110,7 @@ export const router = createBrowserRouter([
       {
         path:'users-management',
         Component:UsersManagement
+        // element:<AdminRoute><UsersManagement></UsersManagement></AdminRoute>
       }
 
     ]

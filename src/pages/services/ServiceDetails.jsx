@@ -74,7 +74,7 @@ const ServiceDetails = () => {
             to={`/booking/${service._id}`}
             className="btn btn-primary w-full"
           >
-            View Details
+            Book Now
           </Link>
       </div>
     </div>

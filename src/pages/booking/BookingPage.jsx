@@ -26,8 +26,8 @@ const BookingPage = () => {
       serviceId: id,
       serviceName: service.service_name,
       cost: service.cost,
-      userEmail: user.email,
-      userName: user.name,
+      userEmail: user?.email,
+      userName: user?.name,
       
     };
 
