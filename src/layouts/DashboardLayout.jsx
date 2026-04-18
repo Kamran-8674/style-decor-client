@@ -1,5 +1,8 @@
 import React from "react";
+import { BsFillPeopleFill } from "react-icons/bs";
+import { FaRegCreditCard, FaUser } from "react-icons/fa";
 import { IoIosCreate } from "react-icons/io";
+import { MdPending } from "react-icons/md";
 import { Link, NavLink, Outlet } from "react-router";
 
 const DashboardLayout = () => {
@@ -77,15 +80,61 @@ const DashboardLayout = () => {
                 data-tip="AddService"
                 to={"/dashboard/add-service"}
               >
-                 <IoIosCreate />
-              <span className="is-drawer-close:hidden">Add Service</span>
-                
+                <IoIosCreate />
+                <span className="is-drawer-close:hidden">Add Service</span>
               </NavLink>
-             
             </li>
             <li>
-              <NavLink to={"/dashboard/my-bookings"}>My Bookings</NavLink>
+              <NavLink
+                className="is-drawer-close:tooltip is-drawer-close:tooltip-right"
+                data-tip="payment history"
+                to={"/dashboard/payment-history"}
+              >
+                <FaRegCreditCard />
+
+                <span className="is-drawer-close:hidden">Payment History</span>
+              </NavLink>{" "}
             </li>
+            <li>
+              <NavLink
+                className="is-drawer-close:tooltip is-drawer-close:tooltip-right"
+                data-tip="My Bookings"
+                to={"/dashboard/my-bookings"}
+              >
+                <BsFillPeopleFill />
+
+                <span className="is-drawer-close:hidden">My Bookings</span>
+              </NavLink>
+            </li>
+            <li>
+              <NavLink
+                className="is-drawer-close:tooltip is-drawer-close:tooltip-right"
+                data-tip="Approve Decorator"
+                to={"/dashboard/approve-decorator"}
+              >
+                <MdPending />
+
+                <span className="is-drawer-close:hidden">
+                  Approve Decorator
+                </span>
+              </NavLink>
+            </li>
+            <li>
+              <NavLink
+                className="is-drawer-close:tooltip is-drawer-close:tooltip-right"
+                data-tip="Users Management"
+                to={"/dashboard/users-management"}
+              >
+                <FaUser />
+
+                <span className="is-drawer-close:hidden">
+                  Users Management
+                </span>
+              </NavLink>
+            </li>
+            {/* <li>
+              <NavLink to={"/dashboard/my-bookings"}></NavLink>
+            </li> */}
 
             {/* List item */}
             <li>

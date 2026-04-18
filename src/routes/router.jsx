@@ -16,6 +16,9 @@ import BookingPage from "../pages/booking/BookingPage";
 import Payment from "../pages/dahsboard/payment/Payment";
 import PaymentSuccess from "../pages/dahsboard/payment/PaymentSuccess";
 import PaymentCancel from "../pages/dahsboard/payment/PaymentCancel";
+import PaymentHistory from "../pages/dahsboard/paymentHistory/PaymentHistory";
+import ApproveDecorator from "../pages/dahsboard/approveDecorator/ApproveDecorator";
+import UsersManagement from "../pages/dahsboard/users management/UsersManagement";
 
 export const router = createBrowserRouter([
   {
@@ -83,6 +86,11 @@ export const router = createBrowserRouter([
 
       },
       {
+        path:'payment-history',
+        Component:PaymentHistory
+
+      },
+      {
         path:'payment/:bookingId',
         Component:Payment
       },
@@ -93,6 +101,14 @@ export const router = createBrowserRouter([
       {
         path:'payment-cancel',
         Component:PaymentCancel
+      },
+      {
+        path:'approve-decorator',
+        Component:ApproveDecorator
+      },
+      {
+        path:'users-management',
+        Component:UsersManagement
       }
 
     ]
