@@ -21,6 +21,9 @@ import ApproveDecorator from "../pages/dahsboard/approveDecorator/ApproveDecorat
 import UsersManagement from "../pages/dahsboard/users management/UsersManagement";
 import AdminRoute from "./AdminRoute";
 import AssignDecorator from "../pages/dahsboard/assign decorator/AssignDecorator";
+import AssignedTasks from "../pages/dahsboard/assignedTasks/AssignedTasks";
+import DecoratorRoute from "./DecoratorRoute";
+import CompletedTasks from "../pages/dahsboard/completedTask/CompletedTasks";
 
 export const router = createBrowserRouter([
   {
@@ -112,6 +115,14 @@ export const router = createBrowserRouter([
         path:'users-management',
         Component:UsersManagement
         // element:<AdminRoute><UsersManagement></UsersManagement></AdminRoute>
+      },
+      {
+        path:'assigned-tasks',
+        element:<DecoratorRoute><AssignedTasks></AssignedTasks></DecoratorRoute>
+      },
+      {
+        path:'completed-tasks',
+        element:<DecoratorRoute><CompletedTasks></CompletedTasks></DecoratorRoute>
       },
       {
         path:'assign-decorator',

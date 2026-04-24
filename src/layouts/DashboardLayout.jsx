@@ -1,8 +1,8 @@
 import React from "react";
 import { BsFillPeopleFill } from "react-icons/bs";
-import { FaRegCreditCard, FaUser } from "react-icons/fa";
+import { FaRegCreditCard, FaTasks, FaUser } from "react-icons/fa";
 import { IoIosCreate, IoMdAddCircle } from "react-icons/io";
-import { MdPending } from "react-icons/md";
+import { MdFileDownloadDone, MdPending } from "react-icons/md";
 import { Link, NavLink, Outlet } from "react-router";
 import useRole from "../hooks/useRole";
 
@@ -110,6 +110,41 @@ const DashboardLayout = () => {
               </NavLink>
 
             </li>
+
+            {/* decorator routs */}
+            {role === 'decorator' && <>
+            <li>
+              <NavLink
+                className="is-drawer-close:tooltip is-drawer-close:tooltip-right"
+                data-tip="Assigned Tasks"
+                to={"/dashboard/assigned-tasks"}
+              >
+                <FaTasks />
+
+                <span className="is-drawer-close:hidden">
+                  Assigned Tasks
+                </span>
+              </NavLink>
+            </li>
+            <li>
+              <NavLink
+                className="is-drawer-close:tooltip is-drawer-close:tooltip-right"
+                data-tip="Completed Tasks"
+                to={"/dashboard/completed-tasks"}
+              >
+                <MdFileDownloadDone />
+
+
+                <span className="is-drawer-close:hidden">
+                  Completed Tasks
+                </span>
+              </NavLink>
+            </li>
+            
+            </>}
+
+
+            {/* admin only route */}
 
             {role === 'admin' && <>
              <li>
