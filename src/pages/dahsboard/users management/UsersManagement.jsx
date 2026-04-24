@@ -1,13 +1,14 @@
 import { useQuery } from "@tanstack/react-query";
-import React from "react";
+import React, { useState } from "react";
 import useAxiosSecure from "../../../hooks/useAxiosSecure";
 
 const UsersManagement = () => {
+  const [searchText,setSearchText] = useState()
   const axiosSecure = useAxiosSecure();
   const { data: users = [], refetch } = useQuery({
-    queryKey: ["users"],
+    queryKey: ["users", searchText],
     queryFn: async () => {
-      const res = await axiosSecure.get("/users");
+      const res = await axiosSecure.get(`/users?searchText=${searchText}`);
       return res.data;
     },
   });
@@ -54,9 +55,13 @@ const UsersManagement = () => {
             <path d="m21 21-4.3-4.3"></path>
           </g>
         </svg>
-        <input type="search" className="grow" placeholder="Search" />
-        <kbd className="kbd kbd-sm">⌘</kbd>
-        <kbd className="kbd kbd-sm">K</kbd>
+        <input
+        onChange={(e)=>setSearchText(e.target.value)}
+        type="search"
+         className="grow"
+         
+         placeholder="Search" />
+        
       </label>
 
       <div className="overflow-x-auto">

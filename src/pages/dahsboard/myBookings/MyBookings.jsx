@@ -93,7 +93,8 @@ const MyBookings = () => {
               <th>cost</th>
               <th>CreatedAt</th>
               <th>payment </th>
-              <th>Deloivery status</th>
+              <th>Tracking Id</th>
+              <th>Delivery status</th>
               <th>Actions</th>
             </tr>
           </thead>
@@ -116,6 +117,7 @@ const MyBookings = () => {
 
 
                 </td>
+                <td>{booking.trackingId}</td>
                 <td>{booking.deliveryStatus}</td>
                 <td className="flex items-center gap-3">
                   <button

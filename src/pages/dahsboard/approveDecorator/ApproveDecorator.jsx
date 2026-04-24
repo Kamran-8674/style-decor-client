@@ -60,8 +60,9 @@ const ApproveDecorator = () => {
               <th>Name</th>
               <th>Email</th>
               <th>Experience</th>
-              <th>Specialty</th>
-              <th>Status</th>
+              
+              <th>Work Status</th>
+              <th>Application Status</th>
               <th>Action</th>
             </tr>
           </thead>
@@ -73,7 +74,7 @@ const ApproveDecorator = () => {
                 <td>{decorator.name}</td>
                 <td>{decorator.email}</td>
                 <td>{decorator.experience} yrs</td>
-                <td className="capitalize">{decorator.specialty}</td>
+                <td>{decorator.workStatus}</td>
 
                 <td>
                   <span className={`${decorator.status==='approve'? "badge badge-success": 'badge badge-warning'}`}>

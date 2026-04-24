@@ -3,24 +3,26 @@ import { useForm } from "react-hook-form";
 import useAuth from "../../hooks/useAuth";
 import useAxiosSecure from "../../hooks/useAxiosSecure";
 import Swal from "sweetalert2";
+import { useNavigate } from "react-router";
 
 const Decorator = () => {
+  const navigate = useNavigate()
   const { register, handleSubmit } = useForm();
   const { user } = useAuth();
   const axiosSecure = useAxiosSecure();
 
   const handleBeDecorator = (data) => {
       const applicationData = {
-      name: user?.name,
+      name: user?.displayName,
       email: user?.email,
       phone: data.phone,
       experience: data.experience,
       portfolio: data.portfolio,
       about: data.about,
     };
-    console.log(data);
     axiosSecure.post("/decorators", applicationData).then((res) => {
       if (res.data.insertedId) {
+
         Swal.fire({
           position: "top-end",
           icon: "success",
@@ -28,9 +30,12 @@ const Decorator = () => {
           showConfirmButton: false,
           timer: 1500,
         });
+        navigate('/')
       }
     });
   };
+
+  
 
   return (
     <div className="max-w-2xl mx-auto p-6 bg-base-100 shadow rounded-xl">
@@ -42,7 +47,7 @@ const Decorator = () => {
         {/* Name */}
         <input
           type="text"
-          defaultValue={user?.name}
+          defaultValue={user?.displayName}
           className="input input-bordered w-full"
         />
 

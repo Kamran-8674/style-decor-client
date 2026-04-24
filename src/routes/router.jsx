@@ -20,6 +20,7 @@ import PaymentHistory from "../pages/dahsboard/paymentHistory/PaymentHistory";
 import ApproveDecorator from "../pages/dahsboard/approveDecorator/ApproveDecorator";
 import UsersManagement from "../pages/dahsboard/users management/UsersManagement";
 import AdminRoute from "./AdminRoute";
+import AssignDecorator from "../pages/dahsboard/assign decorator/AssignDecorator";
 
 export const router = createBrowserRouter([
   {
@@ -111,6 +112,10 @@ export const router = createBrowserRouter([
         path:'users-management',
         Component:UsersManagement
         // element:<AdminRoute><UsersManagement></UsersManagement></AdminRoute>
+      },
+      {
+        path:'assign-decorator',
+        element:<AdminRoute><AssignDecorator></AssignDecorator></AdminRoute>
       }
 
     ]

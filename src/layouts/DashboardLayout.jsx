@@ -1,7 +1,7 @@
 import React from "react";
 import { BsFillPeopleFill } from "react-icons/bs";
 import { FaRegCreditCard, FaUser } from "react-icons/fa";
-import { IoIosCreate } from "react-icons/io";
+import { IoIosCreate, IoMdAddCircle } from "react-icons/io";
 import { MdPending } from "react-icons/md";
 import { Link, NavLink, Outlet } from "react-router";
 import useRole from "../hooks/useRole";
@@ -135,6 +135,20 @@ const DashboardLayout = () => {
 
                 <span className="is-drawer-close:hidden">
                   Users Management
+                </span>
+              </NavLink>
+            </li>
+            <li>
+              <NavLink
+                className="is-drawer-close:tooltip is-drawer-close:tooltip-right"
+                data-tip="Assign Decorator"
+                to={"/dashboard/assign-decorator"}
+              >
+                <IoMdAddCircle />
+
+
+                <span className="is-drawer-close:hidden">
+                  Assign Decorator
                 </span>
               </NavLink>
             </li>
