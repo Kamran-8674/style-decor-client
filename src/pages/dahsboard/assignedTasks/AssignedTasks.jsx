@@ -20,7 +20,8 @@ const AssignedTasks = () => {
 
     const handleDeliveryStatusUpdate = (booking,status) =>{
       const statusInfo = {
-        deliveryStatus : status
+        deliveryStatus : status,
+        decoratorId : booking.decoratorId
        
       }
       const message = `Booking Status Is Updated With ${status.split('-,_').join(' ')}`

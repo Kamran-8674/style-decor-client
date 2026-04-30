@@ -24,6 +24,7 @@ import AssignDecorator from "../pages/dahsboard/assign decorator/AssignDecorator
 import AssignedTasks from "../pages/dahsboard/assignedTasks/AssignedTasks";
 import DecoratorRoute from "./DecoratorRoute";
 import CompletedTasks from "../pages/dahsboard/completedTask/CompletedTasks";
+import DashBoardHome from "../pages/dahsboard/dashBoardHome/DashBoardHome";
 
 export const router = createBrowserRouter([
   {
@@ -80,6 +81,11 @@ export const router = createBrowserRouter([
     path:'dashboard',
     element:<PrivateRoute><DashboardLayout></DashboardLayout></PrivateRoute>,
     children:[
+      {
+        index:true,
+        Component:DashBoardHome
+
+      },
 
       {
         path:'add-service',
