@@ -3,7 +3,7 @@ import React, { useState } from "react";
 import useAxiosSecure from "../../../hooks/useAxiosSecure";
 
 const UsersManagement = () => {
-  const [searchText,setSearchText] = useState()
+  const [searchText,setSearchText] = useState('')
   const axiosSecure = useAxiosSecure();
   const { data: users = [], refetch } = useQuery({
     queryKey: ["users", searchText],

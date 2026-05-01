@@ -1,6 +1,7 @@
 import React from "react";
 import { Link, NavLink } from "react-router";
 import useAuth from "../../../hooks/useAuth";
+import Logo from "../../../components/Logo";
 
 
 const Navbar = () => {
@@ -14,18 +15,47 @@ const Navbar = () => {
   }
 
     const links = <>
-    <li> <NavLink to="">Item 1</NavLink> </li>
-    <li> <NavLink to="/services">Services</NavLink> </li>
-    <li> <NavLink to="/coverage">Coverage</NavLink> </li>
+    <li> <NavLink to="/" className={({ isActive }) =>
+    `px-3 py-1 ${
+      isActive
+        ? "underline text-primary font-semibold"
+        : "hover:underline"
+    }`
+  }>Home</NavLink> </li>
+
+    <li> <NavLink to="/services"
+    className={({ isActive }) =>
+    `px-3 py-1 ${
+      isActive
+        ? "underline text-primary font-semibold"
+        : "hover:underline"
+    }`
+  }>Services</NavLink> </li>
+
+    <li> <NavLink to="/coverage" 
+    className={({ isActive }) =>
+    `px-3 py-1 ${
+      isActive
+        ? "underline text-primary font-semibold"
+        : "hover:underline"
+    }`
+  }>Coverage</NavLink> </li>
 
     {
       user && <>
-          <li> <NavLink to="/dashboard/my-bookings">My Bookings</NavLink> </li>
+          <li> <NavLink to="/dashboard"
+           className={({ isActive }) =>
+    `px-3 py-1 ${
+      isActive
+        ? "underline text-primary font-semibold"
+        : "hover:underline"
+    }`
+  }>DashBoard</NavLink> </li>
 
       
       </>
     }
-                </>   
+      </>   
 
    
   return (
@@ -56,18 +86,18 @@ const Navbar = () => {
             {links}
           </ul>
         </div>
-        <a className="btn btn-ghost text-xl">daisyUI</a>
+        <Logo></Logo>
       </div>
       <div className="navbar-center hidden lg:flex">
         <ul className="menu menu-horizontal px-1">
           {links}
         </ul>
       </div>
-      <div className="navbar-end">
+      <div className="navbar-end ">
         {
-          user?<a className="btn" onClick={handleLogOut}>Log Out</a>:<Link className="btn" to={'login'}>Log In</Link>
+          user?<a className="btn btn-primary" onClick={handleLogOut}>Log Out</a>:<Link className="btn btn-primary" to={'login'}>Log In</Link>
         }
-        <Link className="btn" to={'/decorator'}>Be a decorator</Link>
+        <Link  className="btn ml-2.5 btn-primary" to={'/decorator'}>Be a decorator</Link>
       </div>
     </div>
   );

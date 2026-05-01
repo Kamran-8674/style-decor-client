@@ -36,7 +36,7 @@ const DashboardLayout = () => {
               <path d="M14 10l2 2l-2 2"></path>
             </svg>
           </label>
-          <div className="px-4">Navbar Title</div>
+          <div className="px-4">DashBoard</div>
         </nav>
         <Outlet></Outlet>
         {/* Page content here */}
@@ -77,16 +77,7 @@ const DashboardLayout = () => {
             </li>
 
             {/* our dashborad links */}
-            <li>
-              <NavLink
-                className="is-drawer-close:tooltip is-drawer-close:tooltip-right"
-                data-tip="AddService"
-                to={"/dashboard/add-service"}
-              >
-                <IoIosCreate />
-                <span className="is-drawer-close:hidden">Add Service</span>
-              </NavLink>
-            </li>
+            
             <li>
               <NavLink
                 className="is-drawer-close:tooltip is-drawer-close:tooltip-right"
@@ -147,6 +138,16 @@ const DashboardLayout = () => {
             {/* admin only route */}
 
             {role === 'admin' && <>
+            <li>
+              <NavLink
+                className="is-drawer-close:tooltip is-drawer-close:tooltip-right"
+                data-tip="AddService"
+                to={"/dashboard/add-service"}
+              >
+                <IoIosCreate />
+                <span className="is-drawer-close:hidden">Add Service</span>
+              </NavLink>
+            </li>
              <li>
               <NavLink
                 className="is-drawer-close:tooltip is-drawer-close:tooltip-right"
