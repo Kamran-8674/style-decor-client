@@ -5,7 +5,7 @@ import ServiceCard from "../../services/ServiceCard";
 const ServicesSection = () => {
     const axiosSecure = useAxiosSecure()
 
-  const { data: services = [] } = useQuery({
+  const { data: services = [], isLoading } = useQuery({
     queryKey: ["services"],
     queryFn: async () => {
       const res = await axiosSecure.get('/services') ;
@@ -18,6 +18,13 @@ const ServicesSection = () => {
       <h2 className="text-2xl font-bold mb-4 text-center">
         Our Services
       </h2>
+      {isLoading && (
+        <div className="text-center">
+          <span className="loading loading-spinner"></span>
+        </div>
+      )}
+
+      
 
       <div className="grid md:grid-cols-3 gap-4">
         {services.slice(0, 6).map(service => (
