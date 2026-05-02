@@ -40,7 +40,8 @@ const ServiceDetails = () => {
   
 
     return (
-        <div className="max-w-5xl mx-auto p-6">
+      <div className='bg-gray-100'>
+         <div className="max-w-5xl mx-auto p-6 bg-base-100  ">
       
       {/* Image */}
       <div className="rounded-2xl overflow-hidden shadow-lg">
@@ -78,6 +79,9 @@ const ServiceDetails = () => {
           </Link>
       </div>
     </div>
+
+      </div>
+       
     );
 };
 

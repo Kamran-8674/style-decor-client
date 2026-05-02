@@ -37,7 +37,8 @@ const AddServices = () => {
     });
   };
   return (
-    <div className="max-w-2xl mx-auto p-6 bg-white shadow rounded-xl">
+    <div className="bg-gray-100">
+      <div className="max-w-2xl mx-auto p-6 bg-white shadow rounded-xl">
       <h2 className="text-2xl font-bold mb-4 text-center">Add New Service</h2>
 
       <form onSubmit={handleSubmit(handleAddService)} className="space-y-4">
@@ -115,6 +116,7 @@ const AddServices = () => {
         {/* Submit Button */}
         <button className="btn btn-primary w-full">Add Service</button>
       </form>
+    </div>
     </div>
   );
 };

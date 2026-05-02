@@ -10,11 +10,13 @@ const Decorator = () => {
   const { register, handleSubmit } = useForm();
   const { user } = useAuth();
   const axiosSecure = useAxiosSecure();
+  
 
   const handleBeDecorator = (data) => {
       const applicationData = {
       name: user?.displayName,
       email: user?.email,
+      photo: user?.photoURL,
       phone: data.phone,
       experience: data.experience,
       portfolio: data.portfolio,
@@ -36,7 +38,7 @@ const Decorator = () => {
   };
 
   
-
+console.log(user)
   return (
     <div className="max-w-2xl mx-auto p-6 bg-base-100 shadow rounded-xl">
       <h2 className="text-2xl font-bold mb-4 text-center">
@@ -56,6 +58,13 @@ const Decorator = () => {
           type="email"
           
           value={user?.email}
+          readOnly
+          className="input input-bordered w-full"
+        />
+        <input
+          type="text"
+          
+          value={user?.photoURL}
           readOnly
           className="input input-bordered w-full"
         />

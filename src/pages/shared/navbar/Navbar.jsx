@@ -93,11 +93,11 @@ const Navbar = () => {
           {links}
         </ul>
       </div>
-      <div className="navbar-end ">
+      <div className="navbar-end flex sm:flex-col md:flex-row ">
         {
-          user?<a className="btn btn-primary" onClick={handleLogOut}>Log Out</a>:<Link className="btn btn-primary" to={'login'}>Log In</Link>
+          user?<a className="btn  btn-primary" onClick={handleLogOut}>Log Out</a>:<Link className="btn btn-primary" to={'login'}>Log In</Link>
         }
-        <Link  className="btn ml-2.5 btn-primary" to={'/decorator'}>Be a decorator</Link>
+        <Link  className="btn ml-2.5  btn-primary " to={'/decorator'}>Be a decorator</Link>
       </div>
     </div>
   );
