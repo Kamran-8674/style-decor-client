@@ -5,6 +5,7 @@ import { IoIosCreate, IoMdAddCircle } from "react-icons/io";
 import { MdFileDownloadDone, MdPending } from "react-icons/md";
 import { Link, NavLink, Outlet } from "react-router";
 import useRole from "../hooks/useRole";
+import Logo from '../components/Logo'
 
 const DashboardLayout = () => {
   const {role} =useRole()
@@ -36,7 +37,7 @@ const DashboardLayout = () => {
               <path d="M14 10l2 2l-2 2"></path>
             </svg>
           </label>
-          <div className="px-4">DashBoard</div>
+          <div className="px-4"> <Logo></Logo></div>
         </nav>
         <Outlet></Outlet>
         {/* Page content here */}

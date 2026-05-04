@@ -30,7 +30,7 @@ const TopDecorators = () => {
 
       <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6">
         
-        {decorators.slice(9, 13).map((d) => (
+        {decorators.slice(0,4).map((d) => (
           <div
             key={d._id}
             className="card bg-base-100 shadow-md hover:shadow-xl transition p-4 text-center"

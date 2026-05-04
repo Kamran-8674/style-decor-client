@@ -28,36 +28,62 @@ const PaymentHistory = () => {
   }
 
   return (
-    <div>
-      <h1>My Payments :{payments.length}</h1>
+     <div className="p-6">
+
+    {/* Header */}
+    <h1 className="text-2xl font-bold mb-4">
+      My Payments ({payments.length})
+    </h1>
+
+    {/* Table Container */}
+    <div className="bg-gray-100 shadow-md rounded-xl p-4">
+
       <div className="overflow-x-auto">
         <table className="table table-zebra">
-          {/* head */}
-          <thead>
+
+          {/* Head */}
+          <thead className="bg-primary text-white text-sm">
             <tr>
-              <th></th>
-              <th>Name</th>
+              <th>#</th>
+              <th>Service</th>
               <th>Amount</th>
-              <th>PaidAt</th>
-              <th>Transaction Id</th>
+              <th>Date</th>
+              <th>Transaction ID</th>
             </tr>
           </thead>
+
+          {/* Body */}
           <tbody>
-            {/* row 1 */}
-            {payments.map((payment,iddex)=> <tr key={iddex}>
-              <th>{iddex + 1}</th>
-              <td>{payment.bookingName}</td>
-              <td>{payment.amount}</td>
-              <td>{payment.paidAt}</td>
-              <td>{payment.transactionId}</td>
-            </tr>)}
-            {/* row 2 */}
-           
-            
+            {payments.map((payment, index) => (
+              <tr key={index} className="hover">
+
+                <th>{index + 1}</th>
+
+                <td className="font-medium">
+                  {payment.bookingName}
+                </td>
+
+                <td className="text-primary font-semibold">
+                  ৳ {payment.amount}
+                </td>
+
+                <td className="text-sm text-gray-500">
+                  {payment.paidAt}
+                </td>
+
+                <td className="text-xs break-all">
+                  {payment.transactionId}
+                </td>
+
+              </tr>
+            ))}
           </tbody>
+
         </table>
       </div>
+
     </div>
+  </div>
   );
 };
 

@@ -81,7 +81,7 @@ const MyBookings = () => {
 
 
   return (
-    <div className="py-20 container mx-auto ">
+    <div className="py-4 container mx-auto ">
       <h2 className="text-2xl font-bold text-center mt-6 mb-6">My Bookings</h2>
 
       <div className="overflow-x-auto">

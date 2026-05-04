@@ -117,7 +117,7 @@ const AssignedTasks = () => {
                     className="btn btn-xs btn-success mr-3.5"
                     // disabled={booking.status === "accepted"}
                   >
-                   Progress
+                    Make Progress
 
                   </button>
                   <button
