@@ -83,9 +83,9 @@ const AssignDecorator = () => {
                 <td>
                   <button
                     onClick={() => OpenAssignModalRef(booking)}
-                    className="btn btn-primary text-black"
+                    className="btn btn-primary"
                   >
-                    Assign Decorator
+                    Find Decorator
                   </button>
                 </td>
               </tr>

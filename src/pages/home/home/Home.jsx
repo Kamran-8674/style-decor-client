@@ -2,8 +2,14 @@ import React from 'react';
 import Banner from '../banner/Banner';
 import ServicesSection from '../ServiceSection/ServicesSection';
 import TopDecorators from '../TopDacorators/TopDecorators';
+import useAuth from '../../../hooks/useAuth';
 
 const Home = () => {
+    
+    const {loading}= useAuth()
+    if(loading){
+        return <div>loading</div>
+    }
     return (
         <div >
             <Banner></Banner>

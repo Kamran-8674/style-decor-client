@@ -100,7 +100,7 @@ const MyBookings = () => {
           </thead>
           <tbody>
             {myBookings.map((booking, index) => (
-              <tr key={booking._id} className="hover:bg-orange-200">
+              <tr key={booking._id} className="hover:bg-green-100">
                 <td>{index + 1}</td>
                 <td className="font-medium">{booking.serviceName}</td>
                 <td>{booking.cost}</td>
@@ -110,7 +110,7 @@ const MyBookings = () => {
                     booking.paymentStatus === 'paid' ? 
                     <span className="text-green-400">Paid</span>:
                     
-                    <button onClick={()=>handlePayment(booking)} className="btn btn-primary text-black btn-sm">Pay</button>
+                    <button onClick={()=>handlePayment(booking)} className="btn btn-primary text-white btn-sm">Pay</button>
                    
                   
                   }
@@ -122,7 +122,7 @@ const MyBookings = () => {
                 <td className="flex items-center gap-3">
                   <button
                     onClick={() => handleDelete(booking._id)}
-                    className="btn btn-xs bg-orange-500 text-white hover:bg-orange-600"
+                    className="btn btn-xs bg-primary text-white hover:bg-orange-600"
                   >
                     <FaTrash />
                   </button>

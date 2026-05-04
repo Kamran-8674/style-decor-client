@@ -1,9 +1,10 @@
 import { useQuery } from "@tanstack/react-query";
 import React, { useState } from "react";
 import useAxiosSecure from "../../../hooks/useAxiosSecure";
+import Swal from "sweetalert2";
 
 const UsersManagement = () => {
-  const [searchText,setSearchText] = useState('')
+  const [searchText, setSearchText] = useState("");
   const axiosSecure = useAxiosSecure();
   const { data: users = [], refetch } = useQuery({
     queryKey: ["users", searchText],
@@ -15,24 +16,81 @@ const UsersManagement = () => {
 
   const handleMakeAdmin = (user) => {
     const roleInfo = { role: "admin" };
-    axiosSecure.patch(`/users/${user._id}/role`, roleInfo).then((res) => {
-      if (res.data.modifiedCount) {
-        refetch();
 
-        console.log("user updated");
-      }
+    Swal.fire({
+      title: "Are you sure?",
+      text: "You won't be able to revert this!",
+      icon: "warning",
+      showCancelButton: true,
+      confirmButtonColor: "#3085d6",
+      cancelButtonColor: "#d33",
+      confirmButtonText: "Yes, Make Admin!",
+    }).then((result) => {
+      if (result.isConfirmed)
+        axiosSecure.patch(`/users/${user._id}/role`, roleInfo).then((res) => {
+          if (res.data.modifiedCount) {
+            refetch();
+            Swal.fire({
+              title: "Added!",
+              text: "You made a new admin  .",
+              icon: "success",
+            });
+
+            console.log("user updated");
+          }
+        });
     });
   };
+
   const handleRemoveAdmin = (user) => {
     const roleInfo = { role: "user" };
-    axiosSecure.patch(`/users/${user._id}/role`, roleInfo).then((res) => {
-      if (res.data.modifiedCount) {
-        refetch();
+    Swal.fire({
+      title: "Are you sure?",
+      text: "You won't be able to revert this!",
+      icon: "warning",
+      showCancelButton: true,
+      confirmButtonColor: "#3085d6",
+      cancelButtonColor: "#d33",
+      confirmButtonText: "Yes, Remove Admin!",
+    }).then((result) => {
+      if (result.isConfirmed)
+        axiosSecure.patch(`/users/${user._id}/role`, roleInfo).then((res) => {
+          if (res.data.modifiedCount) {
+            refetch();
+            Swal.fire({
+              title: "Deleted!",
+              text: "Your file has been deleted.",
+              icon: "success",
+            });
 
-        console.log("user updated");
-      }
+            console.log("user updated");
+          }
+        });
     });
   };
+
+  // const handleMakeAdmin = (user) => {
+
+  //    const roleInfo = { role: "admin" };
+
+  // axiosSecure.patch(`/users/${user._id}/role`, roleInfo).then((res) => {
+  //     if (res.data.modifiedCount) {
+  //       refetch();
+
+  //       console.log("user updated");
+  //     }
+  //   });
+  // };
+  // const handleRemoveAdmin = (user) => {
+  //   const roleInfo = { role: "user" };
+  //   axiosSecure.patch(`/users/${user._id}/role`, roleInfo).then((res) => {
+  //     if (res.data.modifiedCount) {
+  //       refetch();
+
+  //       console.log("user updated");
+  //     }
+  //   });
+  // };
 
   return (
     <div className="p-6">
@@ -56,12 +114,11 @@ const UsersManagement = () => {
           </g>
         </svg>
         <input
-        onChange={(e)=>setSearchText(e.target.value)}
-        type="search"
-         className="grow"
-         
-         placeholder="Search" />
-        
+          onChange={(e) => setSearchText(e.target.value)}
+          type="search"
+          className="grow"
+          placeholder="Search"
+        />
       </label>
 
       <div className="overflow-x-auto">
