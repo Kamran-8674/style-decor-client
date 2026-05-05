@@ -25,11 +25,14 @@ import AssignedTasks from "../pages/dahsboard/assignedTasks/AssignedTasks";
 import DecoratorRoute from "./DecoratorRoute";
 import CompletedTasks from "../pages/dahsboard/completedTask/CompletedTasks";
 import DashBoardHome from "../pages/dahsboard/dashBoardHome/DashBoardHome";
+import About from "../pages/About/About";
+import ErrorPage from "../pages/errorPage/ErrorPage";
 
 export const router = createBrowserRouter([
   {
     path: "/",
     element: <RootLayout></RootLayout>,
+    errorElement:<ErrorPage></ErrorPage>,
     children:[
         {
             index:true,
@@ -38,6 +41,11 @@ export const router = createBrowserRouter([
         {
           path:'services',
           Component:Services
+        },
+        {
+          path:'about',
+          Component:About
+
         },
         {
           path:'service/:id',
@@ -89,7 +97,8 @@ export const router = createBrowserRouter([
 
       {
         path:'add-service',
-        Component:AddServices
+        // Component:AddServices
+        element:<AdminRoute><AddServices></AddServices></AdminRoute>
       },
       {
         path:'my-bookings',
@@ -119,8 +128,8 @@ export const router = createBrowserRouter([
       },
       {
         path:'users-management',
-        Component:UsersManagement
-        // element:<AdminRoute><UsersManagement></UsersManagement></AdminRoute>
+        // Component:UsersManagement
+        element:<AdminRoute><UsersManagement></UsersManagement></AdminRoute>
       },
       {
         path:'assigned-tasks',

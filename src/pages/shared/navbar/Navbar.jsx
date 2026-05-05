@@ -2,17 +2,18 @@ import React from "react";
 import { Link, NavLink } from "react-router";
 import useAuth from "../../../hooks/useAuth";
 import Logo from "../../../components/Logo";
+import Profile from "../../../components/Profile";
 
 
 const Navbar = () => {
-  const {user,logOut} = useAuth()
-  const handleLogOut = () =>{
-    logOut()
-    .then()
-    .catch(err=>{
-      console.log(err)
-    })
-  }
+  const {user} = useAuth()
+  // const handleLogOut = () =>{
+  //   logOut()
+  //   .then()
+  //   .catch(err=>{
+  //     console.log(err)
+  //   })
+  // }
 
     const links = <>
     <li> <NavLink to="/" className={({ isActive }) =>
@@ -31,6 +32,14 @@ const Navbar = () => {
         : "hover:underline"
     }`
   }>Services</NavLink> </li>
+    <li> <NavLink to="/about"
+    className={({ isActive }) =>
+    `px-3 py-1 ${
+      isActive
+        ? "underline text-primary font-semibold"
+        : "hover:underline"
+    }`
+  }>About</NavLink> </li>
 
     <li> <NavLink to="/coverage" 
     className={({ isActive }) =>
@@ -93,12 +102,17 @@ const Navbar = () => {
           {links}
         </ul>
       </div>
-      <div className="navbar-end flex sm:flex-col md:flex-row ">
+      {/* <div className="navbar-end flex sm:flex-col md:flex-row ">
         {
           user?<a className="btn  btn-primary" onClick={handleLogOut}>Log Out</a>:<Link className="btn btn-primary" to={'login'}>Log In</Link>
         }
         <Link  className="btn ml-2.5  btn-primary " to={'/decorator'}>Be a decorator</Link>
+      </div> */}
+      <div className="navbar-end pr-6 ">
+        <Profile></Profile>
+       
       </div>
+      
     </div>
   );
 };
