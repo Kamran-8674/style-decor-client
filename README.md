@@ -38,5 +38,5 @@
 ## Live Website
 
 🚀 StyleDecor Live Link:  
-[https://capable-mooncake-337b3d.netlify.app/]
+[https://sage-bombolone-b6cc4f.netlify.app/]
 
