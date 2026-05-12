@@ -4,6 +4,7 @@ import useAuth from "../../hooks/useAuth";
 import useAxiosSecure from "../../hooks/useAxiosSecure";
 import Swal from "sweetalert2";
 import { useNavigate } from "react-router";
+import { toast } from "react-toastify";
 
 const Decorator = () => {
   const navigate = useNavigate()
@@ -34,6 +35,9 @@ const Decorator = () => {
         });
         navigate('/')
       }
+      if (res.data.message === "decorator exist") {
+  toast.error("You already applied as decorator");
+}
     });
   };
 

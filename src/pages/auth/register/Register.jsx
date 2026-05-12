@@ -70,47 +70,154 @@ const Register = () => {
     }
 
   return (
-    <div className="w-4xl mx-auto ">
-      <form className="card-body" onSubmit={handleSubmit(handleRegister)}>
-        <fieldset className="fieldset">
-          <label className="label">Name</label>
-          <input type="text" className="input"
-          {...register('name', {required:true})}
-          placeholder="Your Name" />
-          {errors.name?.type==='required' && <p className="text-red-400">Name is required</p>}
+     <div className="min-h-screen flex items-center justify-center bg-base-200 px-4 py-10">
 
-          <label className="label">Photo</label>
-          <input type="file" className="file-input"
-          {...register('photo', {required:true})}
-          placeholder="Your Photo" />
-          {errors.photo?.type==='required' && <p className="text-red-400"> is required</p>}
+    <div className="w-full max-w-md bg-base-100 shadow-2xl rounded-2xl">
 
+      {/* Header */}
+      <div className="text-center pt-8">
+        <h1 className="text-3xl font-bold">
+          Create Account
+        </h1>
 
-          <label className="label">Email</label>
-          <input type="email" className="input"
-          {...register('email', {required:true})}
-          placeholder="Email" />
-          {errors.email?.type==='required' && <p className="text-red-400">email is required</p>}
+        <p className="text-gray-500 mt-2">
+          Join StyleDecor today
+        </p>
+      </div>
 
+      {/* Form */}
+      <form
+        className="card-body"
+        onSubmit={handleSubmit(handleRegister)}
+      >
+        <fieldset className="fieldset space-y-2">
 
-          
-
-          
-          <label className="label">Password</label>
-          <input type="password" className="input"
-          {...register('password',{required:true, minLength:6})}
-          placeholder="Password" />
-          {errors.password?.type==='required' && <p className="text-red-400">password is required</p>}
-          {errors.password?.type==='minLength' && <p className="text-red-400">must be above 6</p>}
+          {/* Name */}
           <div>
-            <a className="link link-hover">Forgot password?</a>
+            <label className="label font-medium">
+              Name
+            </label>
+
+            <input
+              type="text"
+              className="input input-bordered w-full"
+              {...register("name", { required: true })}
+              placeholder="Your Name"
+            />
+
+            {errors.name?.type === "required" && (
+              <p className="text-red-400 text-sm mt-1">
+                Name is required
+              </p>
+            )}
           </div>
-          <button className="btn w-[38%] btn-neutral mt-4">Register</button>
+
+          {/* Photo */}
+          <div>
+            <label className="label font-medium">
+              Photo
+            </label>
+
+            <input
+              type="file"
+              className="file-input file-input-bordered w-full"
+              {...register("photo", { required: true })}
+            />
+
+            {errors.photo?.type === "required" && (
+              <p className="text-red-400 text-sm mt-1">
+                Photo is required
+              </p>
+            )}
+          </div>
+
+          {/* Email */}
+          <div>
+            <label className="label font-medium">
+              Email
+            </label>
+
+            <input
+              type="email"
+              className="input input-bordered w-full"
+              {...register("email", { required: true })}
+              placeholder="Email"
+            />
+
+            {errors.email?.type === "required" && (
+              <p className="text-red-400 text-sm mt-1">
+                Email is required
+              </p>
+            )}
+          </div>
+
+          {/* Password */}
+          <div>
+            <label className="label font-medium">
+              Password
+            </label>
+
+            <input
+              type="password"
+              className="input input-bordered w-full"
+              {...register("password", {
+                required: true,
+                minLength: 6,
+              })}
+              placeholder="Password"
+            />
+
+            {errors.password?.type === "required" && (
+              <p className="text-red-400 text-sm mt-1">
+                Password is required
+              </p>
+            )}
+
+            {errors.password?.type === "minLength" && (
+              <p className="text-red-400 text-sm mt-1">
+                Must be at least 6 characters
+              </p>
+            )}
+          </div>
+
+          {/* Forgot */}
+          {/* <div className="text-right">
+            <a className="text-sm link link-hover text-primary">
+              Forgot password?
+            </a>
+          </div> */}
+
+          {/* Button */}
+          <button className="btn btn-primary w-full mt-4">
+            Register
+          </button>
+
         </fieldset>
-        <p>Already have an account <Link to={'/login'} className="text-blue-400 underline">Login</Link> </p>
+
+        {/* Login */}
+        <p className="text-center mt-4 text-sm">
+          Already have an account?{" "}
+          <Link
+            to={"/login"}
+            className="text-primary font-medium underline"
+          >
+            Login
+          </Link>
+        </p>
       </form>
-      <SocialLogin></SocialLogin>
+
+      {/* Divider */}
+      <div className="divider px-6">
+        OR
+      </div>
+
+      {/* Social Login */}
+      <div className="pb-8 px-6">
+        <SocialLogin />
+      </div>
+
     </div>
+  </div>
   );
 };
 

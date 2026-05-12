@@ -40,10 +40,10 @@ const Profile = () => {
               <Link to="/dashboard">Dashboard</Link>
             </li>
 
-            {/* ⭐ Be Decorator (only normal user) */}
+            
             {user?.role !== "decorator" && (
               <li>
-                <Link to="/be-decorator" className="text-primary font-medium">
+                <Link to="/decorator" className="text-primary font-medium">
                   Be a Decorator
                 </Link>
               </li>
